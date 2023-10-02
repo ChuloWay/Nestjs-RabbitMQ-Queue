@@ -11,6 +11,6 @@ import config from '../utils/config';
     }),
   ],
   providers: [ConsumerAmqp, ProducerService],
-  exports: [ProducerService]
+  exports: [ProducerService],
 })
 export class QueueModule {}
