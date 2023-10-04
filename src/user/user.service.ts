@@ -46,10 +46,6 @@ export class UserService {
       subject: 'Welcome to Our Community',
       html: `<p>Hello ${user.username},</p>
       <p>Welcome to our community! Your account is now active.</p>
-      <p>Use the following credentials to log in:</p>
-      <ul>
-        <li><strong>Email:</strong> ${user.email}</li>
-      </ul>
       <p>Enjoy your time with us!</p>`,
     };
 

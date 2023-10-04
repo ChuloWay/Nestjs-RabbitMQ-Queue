@@ -18,8 +18,9 @@ require('dotenv').config();
         },
       },
       defaults: {
-        from: '"Buka" <noreply@buka.ng>',
+        from: process.env.FROM_EMAIL,
       },
+      
     }),
   ],
   controllers: [],
