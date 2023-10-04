@@ -7,6 +7,8 @@ import config from './utils/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { dataSourceOptions } from './database/db';
 import { UserModule } from './user/user.module';
+import { MailerModule } from '@nestjs-modules/mailer';
+import { EmailServiceModule } from './mailer/mail.module';
 
 @Module({
   imports: [
@@ -18,6 +20,7 @@ import { UserModule } from './user/user.module';
     TypeOrmModule.forRoot(dataSourceOptions),
     QueueModule,
     UserModule,
+    EmailServiceModule,
   ],
   controllers: [AppController],
   providers: [AppService],

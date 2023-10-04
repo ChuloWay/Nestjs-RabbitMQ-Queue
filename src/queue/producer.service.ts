@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable, Logger } from '@nestjs/common';
 import { Connection } from 'amqplib';
 import { InjectAmqpConnection } from 'nestjs-amqp';
 
@@ -26,5 +26,25 @@ export class ProducerService {
     }
 
     await channel.close();
+  }
+
+  async addToEmailQueue(mail: any) {
+    try {
+      console.log('mail', mail);
+
+      // Send the email task to the RabbitMQ queue
+      const channel = await this.amqp.createChannel();
+      await channel.assertQueue('email-queue', { durable: true });
+      channel.sendToQueue('email-queue', Buffer.from(JSON.stringify(mail)), {
+        persistent: true,
+      });
+      Logger.log('Sent To Queue');
+    } catch (error) {
+      console.error('Error adding mail to queue', error);
+      throw new HttpException(
+        'Error adding mail to queue',
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
+    }
   }
 }

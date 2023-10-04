@@ -29,6 +29,7 @@
     "deploy": "npm run rmdist && npm run prebuild && npm run build && npm run apply:migration && npm run start"
   },
   "dependencies": {
+    "@nestjs-modules/mailer": "^1.9.1",
     "@nestjs/common": "^10.0.0",
     "@nestjs/core": "^10.0.0",
     "@nestjs/mapped-types": "*",
@@ -41,6 +42,7 @@
     "class-validator": "^0.14.0",
     "dotenv": "^16.3.1",
     "nestjs-amqp": "^0.2.2",
+    "nodemailer": "^6.9.5",
     "pg": "^8.11.3",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.1",
